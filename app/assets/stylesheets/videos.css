@@ -1,11 +1,19 @@
 body {
-  padding-top: 20px;
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  margin-top: 50px;
+}
+
+.borderless tr, .borderless td{
+  border: none !important;
 }
 
 .video_content {
   position: relative;
   padding-top: 69px;
-  padding-bottom: 30%;
+  padding-bottom: 35%;
   overflow: hidden;
 }
 
@@ -15,18 +23,4 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-}
-
-.content_screenshot img{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-width: 320px;
-  max-height: 180px;
-}
-
-.content_screenshot{
-  width: 320px;
-  height: 180px;
 }

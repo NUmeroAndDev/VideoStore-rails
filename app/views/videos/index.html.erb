@@ -1,17 +1,23 @@
 <div class="container main-content content_index">
 
   <% @videos.each do |video| %>
-    <div class="row content_item">
-      <div class="col-md-4 col-xs-6 content_screenshot">
-        <%= image_tag(video.path_url(:screenshot).to_s, id: "video", :alt => "screenshot") %>
-      </div>
-      <div class="col-md-8 col-xs-6">
-        <h4><%= link_to video.title, video %></h4>
-        <p>
-          <%= video.updated_at.to_s.split(" ")[0] + " " + video.updated_at.to_s.split(" ")[1]  %>
-        </p>
-      </div>
-    </div>
+
+    <table class="table borderless">
+      <tbody>
+        <tr>
+
+          <td width="45%">
+            <%= image_tag(video.path_url(:screenshot).to_s, class: "img-responsive", alt: "screenshot") %>
+          </td>
+
+          <td>
+            <h4><%= link_to video.title, video %></h4>
+            <%= video.updated_at.to_s.split(" ")[0] + " " + video.updated_at.to_s.split(" ")[1]  %>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
   <% end %>
 
 </div>
