@@ -8,6 +8,7 @@
 <p>
   <strong>Path:</strong>
   <%= @video.path %>
+  <%= video_tag(@video.path, controls: true, autobuffer: false, size: '500x281') %>
 </p>
 
 <p>
