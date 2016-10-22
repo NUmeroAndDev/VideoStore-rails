@@ -45,18 +45,18 @@ class VideoUploader < CarrierWave::Uploader::Base
   end
 
   def screenshot
-    tmpfile = File.join(File.dirname(current_path), "tmpfile")
+    tmp_file = File.join(File.dirname(current_path), "tmpfile")
 
-    File.rename(current_path, tmpfile)
-    tmpfile.slice!(Rails.root.to_s + "/")
-    imagePath = current_path.to_s
-    imagePath.slice!(Rails.root.to_s + "/")
+    File.rename(current_path, tmp_file)
+    tmp_file.slice!(Rails.root.to_s + "/")
+    image_file = current_path.to_s
+    image_file.slice!(Rails.root.to_s + "/")
 
-    movie = FFMPEG::Movie.new(tmpfile)
-    movie.screenshot(imagePath + ".jpg",{ seek_time: 5, :resolution => '500x300'}, preserve_aspect_ratio: :width)
-    File.rename(imagePath + ".jpg", current_path)
+    movie = FFMPEG::Movie.new(tmp_file)
+    movie.screenshot(image_file + ".jpg",{ seek_time: 5, :resolution => '500x300'}, preserve_aspect_ratio: :width)
+    File.rename(image_file + ".jpg", current_path)
 
-    File.delete(tmpfile)
+    File.delete(tmp_file)
   end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

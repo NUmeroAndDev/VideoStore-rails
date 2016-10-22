@@ -10,6 +10,10 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    @video = Video.find(params[:id])
+
+    @video.access_count += 1
+    @video.save
   end
 
   # GET /videos/new
@@ -28,7 +32,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
+        format.html { redirect_to @video }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new }
@@ -42,7 +46,7 @@ class VideosController < ApplicationController
   def update
     respond_to do |format|
       if @video.update(video_params) && @video.video.recreate_versions!
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
+        format.html { redirect_to @video }
         format.json { render :show, status: :ok, location: @video }
       else
         format.html { render :edit }
@@ -56,7 +60,7 @@ class VideosController < ApplicationController
   def destroy
     @video.destroy
     respond_to do |format|
-      format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }
+      format.html { redirect_to videos_url }
       format.json { head :no_content }
     end
   end
