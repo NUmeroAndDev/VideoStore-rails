@@ -1,20 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="container main-content content_show">
+  <div class="video_content">
+    <%= video_tag(@video.path, controls: true, autobuffer: false, size: '500x281') %>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @video.title %>
-</p>
+  <div class="video_detail">
+    <div class="video_title col-md-12 col-xs-12">
+      <h3><%= @video.title %></h3>
+    </div>
 
-<p>
-  <strong>Path:</strong>
-  <%= @video.path %>
-  <%= video_tag(@video.path, controls: true, autobuffer: false, size: '500x281') %>
-</p>
+    <div class="video_access_count col-md-12 col-xs-12">
+      <h4 class="text-right">再生回数: <%= @video.access_count %></h4>
+    </div>
 
-<p>
-  <strong>Access count:</strong>
-  <%= @video.access_count %>
-</p>
+    <div class="video_buttons col-md-12 col-xs-12 text-right">
+      <%= button_to edit_video_path(@video), method: :get, class: 'btn btn-default' do %>
+        編集
+      <% end %>
 
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+      <%= button_to @video, method: :delete, data: { confirm: "削除しますか?" },  class: "btn btn-default" do %>
+        削除
+      <% end %>
+    </div>
+  </div>
+</div>

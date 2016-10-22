@@ -1,3 +1,18 @@
 body {
   padding-top: 20px;
 }
+
+.video_content {
+  position: relative;
+  padding-top: 69px;
+  padding-bottom: 50%;
+  overflow: hidden;
+}
+
+.video_content video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
