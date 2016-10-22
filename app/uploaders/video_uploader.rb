@@ -48,10 +48,13 @@ class VideoUploader < CarrierWave::Uploader::Base
     tmpfile = File.join(File.dirname(current_path), "tmpfile")
 
     File.rename(current_path, tmpfile)
+    tmpfile.slice!(Rails.root.to_s + "/")
+    imagePath = current_path.to_s
+    imagePath.slice!(Rails.root.to_s + "/")
 
     movie = FFMPEG::Movie.new(tmpfile)
-    movie.screenshot(current_path + ".jpg",{ seek_time: 5, :resolution => '500x300'}, preserve_aspect_ratio: :width)
-    File.rename(current_path + ".jpg", current_path)
+    movie.screenshot(imagePath + ".jpg",{ seek_time: 5, :resolution => '500x300'}, preserve_aspect_ratio: :width)
+    File.rename(imagePath + ".jpg", current_path)
 
     File.delete(tmpfile)
   end

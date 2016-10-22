@@ -1,5 +1,5 @@
 class Video < ApplicationRecord
-  mount_uploader :video, VideoUploader
+  mount_uploader :path, VideoUploader
 
-  validates :title, :video, :presence => true
+  validates :title, :path, :presence => true
 end

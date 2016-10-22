@@ -17,13 +17,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :path %>
-    <%= f.text_field :path %>
-  </div>
-
-  <div class="field">
-    <%= f.label :access_count %>
-    <%= f.number_field :access_count %>
+    <%= f.file_field :path, accept: "video/*", class: "form-control" %>
   </div>
 
   <div class="actions">
