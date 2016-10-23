@@ -6,6 +6,10 @@ body {
   margin-top: 50px;
 }
 
+.main-content {
+  padding: 16px;
+}
+
 .borderless tr, .borderless td{
   border: none !important;
 }

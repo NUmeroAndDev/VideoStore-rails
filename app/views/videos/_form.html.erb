@@ -11,16 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label "タイトル" %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.file_field :path, accept: "video/*", class: "form-control" %>
+  <div class="form-group">
+    <%= f.label "ファイル" %>
+    <%= f.file_field :path, accept: "video/*" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit @submit_button_text, data: { disable_with: "処理中..." } %>
+
 <% end %>

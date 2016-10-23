@@ -19,10 +19,12 @@ class VideosController < ApplicationController
   # GET /videos/new
   def new
     @video = Video.new
+    @submit_button_text = "アップロード"
   end
 
   # GET /videos/1/edit
   def edit
+    @submit_button_text = "更新"
   end
 
   # POST /videos
