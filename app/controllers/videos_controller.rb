@@ -47,7 +47,7 @@ class VideosController < ApplicationController
   # PATCH/PUT /videos/1.json
   def update
     respond_to do |format|
-      if @video.update(video_params) && @video.video.recreate_versions!
+      if @video.update(video_params) && @video.path.recreate_versions!
         format.html { redirect_to @video }
         format.json { render :show, status: :ok, location: @video }
       else
